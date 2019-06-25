@@ -37,8 +37,8 @@ class Bot:
 
 	def neighbours(self):
 		neighbours =[]
-		for b in SWARM and b != self:
-			if b.dist(self) < self.neighbourhood_radius:
+		for b in SWARM:
+			if b.dist(self) < self.neighbourhood_radius and b != self:
 				neighbours.append(b)
 		return neighbours
 
