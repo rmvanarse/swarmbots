@@ -607,6 +607,7 @@ def main():
     if not _HAVE_CV2:
         from PIL import Image
 
+
     for filename in options.filenames:
 
         if _HAVE_CV2:
@@ -671,5 +672,10 @@ def main():
 
 
 if __name__ == '__main__':
+    
+    camera = cv2.VideoCapture(0)
+    ret_temp, img_temp = camera.read()
+    cv2.imwrite('current_img.jpeg', img_temp)
+
     main()
 
