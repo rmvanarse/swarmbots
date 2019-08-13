@@ -1,0 +1,1 @@
+/usr/bin/cc   -Wall -Wsign-compare -g -march=native -lpthread -std=gnu99 -O3 -DNDEBUG   CMakeFiles/maketags.dir/contrib/maketags.c.o  -o ../maketags -rdynamic ../lib/libapriltag.so -lpthread -lm -Wl,-rpath,/home/abc/apriltag_python/apriltag/build/lib: 

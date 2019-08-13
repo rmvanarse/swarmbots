@@ -1,0 +1,10 @@
+3x3 cm, 7x5 pattern
+
+output from my calibration script in this repo:
+  fx = 765.00
+  fy = 764.18
+  cx = 393.72
+  cy = 304.66
+
+pastable into Python:
+  fx, fy, cx, cy = (765.00, 764.18, 393.72, 304.66)

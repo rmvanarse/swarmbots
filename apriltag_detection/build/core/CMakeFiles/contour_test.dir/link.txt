@@ -1,0 +1,1 @@
+/usr/bin/cc   -Wall -Wsign-compare -g -march=native -lpthread -std=gnu99 -O3 -DNDEBUG   CMakeFiles/contour_test.dir/contrib/contour_test.c.o  -o ../contour_test -rdynamic ../lib/libapriltag.so -lpthread -lm -Wl,-rpath,/home/abc/apriltag_python/apriltag/build/lib 

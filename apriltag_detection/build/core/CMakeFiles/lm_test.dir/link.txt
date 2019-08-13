@@ -1,0 +1,1 @@
+/usr/bin/c++    -Wall -Wsign-compare -g -march=native -lpthread -O3 -DNDEBUG   CMakeFiles/lm_test.dir/contrib/lm_test.cpp.o  -o ../lm_test -rdynamic ../lib/libapriltag.so -lpthread -lm -Wl,-rpath,/home/abc/apriltag_python/apriltag/build/lib 
