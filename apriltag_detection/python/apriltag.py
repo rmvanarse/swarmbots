@@ -667,15 +667,18 @@ def main():
             
         if use_gui:
             cv2.imshow('win', overlay)
-            while cv2.waitKey(5) < 0:
-                pass
+            k_1 = cv2.waitKey(1)
+            #while cv2.waitKey(5) < 0:
+                #pass
 
 
 if __name__ == '__main__':
-    
-    camera = cv2.VideoCapture(0)
-    ret_temp, img_temp = camera.read()
-    cv2.imwrite('current_img.jpeg', img_temp)
-
-    main()
+    from time import sleep
+    while(True):
+        camera = cv2.VideoCapture(0)
+        ret_temp, img_temp = camera.read()
+        cv2.imwrite('current_img.jpeg', img_temp)
+        del(camera)
+        main()
+        sleep(0.1)
 
