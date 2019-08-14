@@ -675,7 +675,7 @@ def main():
 if __name__ == '__main__':
     from time import sleep
     while(True):
-        camera = cv2.VideoCapture(0)
+        camera = cv2.VideoCapture(1)
         ret_temp, img_temp = camera.read()
         cv2.imwrite('current_img.jpeg', img_temp)
         del(camera)
