@@ -1,5 +1,8 @@
 #Hostnumber $1
 #Run: $bash/multimaster.bash <hostnumber>
-
+base=11310
+a=`expr $base + $1`
+echo $a
 export ROS_MASTER_URI=http://localhost:$a
-roscore --port 11311 >/dev/null 2>&1 &
+roscore --port $a >/dev/null 2>&1 &
+echo $ROS_MASTER_URI
