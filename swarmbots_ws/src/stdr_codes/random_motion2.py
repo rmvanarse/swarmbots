@@ -10,7 +10,7 @@ from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
 
 
-def cb(odom):
+def callback(odom):
 	global x
 	global y
 	x=odom.pose.pose.position.x
@@ -26,7 +26,7 @@ rate_obj=rospy.Rate(10)
 twist_obj=Twist()
 
 while not rospy.is_shutdown():
-	sub=rospy.Subscriber('robot1/odom',Odometry,cb) #confirm your robot name
+	sub=rospy.Subscriber('robot1/odom',Odometry,callback) #confirm your robot name
 	a=random.random()*2*3.14
 	twist_obj.linear.x=(math.cos(a))*10
 	twist_obj.linear.y=(math.sin(a))*10
