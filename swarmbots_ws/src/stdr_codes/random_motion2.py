@@ -20,7 +20,7 @@ def callback(odom):
 
 rospy.init_node('random_motion_controller')
 
-pub=rospy.Publisher('robot1/cmd_vel',Twist) #confirm your robot name
+pub=rospy.Publisher('robot0/cmd_vel',Twist) #confirm your robot name
 rate_obj=rospy.Rate(10)
 
 twist_obj=Twist()
