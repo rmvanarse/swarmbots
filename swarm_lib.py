@@ -13,6 +13,7 @@ Functions need to be added and optimized
 
 import numpy as np
 import math
+import matplotlib.pyplot as plt
 
 DEFAULT_NEIGHBOURHOOD_VAL = 5 #Radius of neighbourhood 
 DEFAULT_SIZE = 0.5 #Radius of chassis
@@ -53,3 +54,14 @@ class Bot:
 		print("Direction: "+str(self.theta))
 		print("")
 		
+
+
+#Show bots in pyplot
+
+def show_swarm():
+	x_list = [bot.x for bot in SWARM]
+	y_list = [bot.y for bot in SWARM]
+	plt.scatter(x_list, y_list)
+	plt.show()
+
+
