@@ -24,7 +24,7 @@ SWARM =[] #List of all bots in the swarm
 
 class Bot:
 
-	def __init__(self, x,y, theta=0, state= 0, neighbourhood_radius = DEFAULT_NEIGHBOURHOOD_VAL):
+	def __init__(self, x,y, theta=0, state= 'stop', neighbourhood_radius = DEFAULT_NEIGHBOURHOOD_VAL):
 		self.x = float(x)
 		self.y = float(y)
 		self.theta = theta
