@@ -47,3 +47,6 @@ class Bot:
 		grp.append(self)
 		return grp
 
+	def state(self):
+		print("Position: ", self.x, ", ",self.y)
+
