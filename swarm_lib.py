@@ -47,6 +47,9 @@ class Bot:
 		grp.append(self)
 		return grp
 
-	def state(self):
-		print("Position: ", self.x, ", ",self.y)
-
+	def print_state(self):
+		print("BOT " +str(SWARM.index(self)))
+		print("Position: "+ str(self.x)+ ","+str(self.y))
+		print("Direction: "+str(self.theta))
+		print("")
+		

@@ -10,9 +10,19 @@ DEFAULT_X_RANGE=10
 DEFAULT_Y_RANGE =10
 
 
-def random_initializer(num_bots, x_range=DEFAULT_X_RANGE, y_range=DEFAULT_Y_RANGE, origin = (0,0)):
+def random_initializer(num_bots, x_range=DEFAULT_X_RANGE, y_range=DEFAULT_Y_RANGE, origin = (0,0), verbose=False):
 	for i in range(num_bots):
 		xpos = origin[0] + random.random()*x_range
 		ypos = origin[1] + random.random()*y_range
 		theta = random.random()*3.1415926*2
-		swarm_lib.SWARM.append(swarm_lib.Bot(xpos, ypos, theta))
+		bot = swarm_lib.Bot(xpos, ypos, theta)
+
+	if(verbose):
+		for bot in swarm_lib.SWARM:
+			bot.print_state()
+
+if __name__ == "__main__":
+	random_initializer(6, verbose=True)
+
+	print("Random Tests:\n")
+	swarm_lib.SWARM[3].neighbours()[0].print_state()
