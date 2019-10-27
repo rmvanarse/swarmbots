@@ -1,6 +1,11 @@
 """
 Created By: Rishikesh Vanarse
 26/10/19
+
+initialize_swarm.py
+
+Contains: Different initialization methods for a swarm
+
 """
 import random
 

@@ -1,3 +1,21 @@
+"""
+Created by: Rishikesh Vanarse
+27/10/19
+
+Simulates a swarm of any number of bots
+on pyplot, for performing any imported task
+
+Modularity:
+
+1) Initialization:
+   Any initialization function from initialize_swarm (imported) can be used
+
+2) Swarm task:
+   The generate_points function can call any swarm task
+   from any of the imported modules
+"""
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
@@ -5,6 +23,7 @@ import matplotlib.animation as animation
 import swarm_lib as lib
 import initialize_swarm as sw
 import aggregation as aggr
+import formations
 
 
 #Initialize swarm
@@ -46,7 +65,8 @@ def update(data):
 
 def generate_points():
 	condition = True				#Change to condition from aggr library
-	task_func = aggr.go_towards_centroid	#Change to function from aggr lib
+	#task_func = aggr.go_towards_centroid	
+	task_func = formations.formation_team	
 	while condition:
 		yield(task_func())
 

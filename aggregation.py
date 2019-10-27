@@ -45,6 +45,8 @@ def go_towards_centroid(step_size = lib.STEP, pid=True):
 	Use: Every bot takes a single step in the direction of the local centroid
 	Returns: (new_x, new_y)
 	Calls: get_local_centroids() and swarm_lib.goto_direct
+
+	*optimization needed
 	
 	"""
 	centroids_x, centroids_y = get_local_centroids()
@@ -63,5 +65,7 @@ def go_towards_centroid(step_size = lib.STEP, pid=True):
 
 		x_new.append(x_goal)
 		y_new.append(y_goal)
+
+		# PID Part NOT implemeted yet
 
 	return (x_new, y_new)

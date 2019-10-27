@@ -18,7 +18,8 @@ import matplotlib.pyplot as plt
 DEFAULT_NEIGHBOURHOOD_VAL = 5 #Radius of neighbourhood 
 DEFAULT_SIZE = 0.5 #Radius of chassis
 MAX_SPEED = 1.5
-STEP = 0.2
+STEP = 0.2	#Used in aggr
+
 
 
 
