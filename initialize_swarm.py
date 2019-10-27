@@ -21,6 +21,7 @@ def random_initializer(num_bots, x_range=DEFAULT_X_RANGE, y_range=DEFAULT_Y_RANG
 		for bot in swarm_lib.SWARM:
 			bot.print_state()
 
+"""
 if __name__ == "__main__":
 	random_initializer(10, verbose=True)
 	swarm_lib.show_swarm()
@@ -28,3 +29,5 @@ if __name__ == "__main__":
 
 	print("Random Tests:\n")
 	#swarm_lib.SWARM[3].neighbours()[0].print_state()
+
+"""
