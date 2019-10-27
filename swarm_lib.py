@@ -20,6 +20,8 @@ DEFAULT_SIZE = 0.5 #Radius of chassis
 MAX_SPEED = 1.5
 STEP = 0.2	#Used in aggr
 
+DEFAULT_XRANGE = 10	#Used in simulation limits
+DEFAULT_YRANGE =10
 
 
 

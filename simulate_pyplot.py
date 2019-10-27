@@ -28,7 +28,7 @@ import area_coverage as coverage
 
 
 #Initialize swarm
-sw.random_initializer(20, verbose=True)
+sw.random_initializer(10, verbose=True)
 x_list = [bot.x for bot in lib.SWARM]
 y_list = [bot.y for bot in lib.SWARM]
 
@@ -37,6 +37,9 @@ fig, ax = plt.subplots()
 bot_points, = ax.plot(x_list, y_list, 'o')
 
 #Set Limits (ToDo)
+ax.set_xlim(( 0, lib.DEFAULT_XRANGE))
+ax.set_ylim((0, lib.DEFAULT_YRANGE))
+
 
 #Helper functions
 def random_generator():
@@ -79,6 +82,6 @@ print len(lib.SWARM)
 Main
 
 """
-ani = animation.FuncAnimation(fig, update, generate_points, interval=150)
-#ani.save('animation.gif', writer='imagemagick', fps=4);
+ani = animation.FuncAnimation(fig, update, generate_points, interval=150, blit=True)
+#ani.save('../anim_saves/area_cvg_10bots.gif', writer='imagemagick', fps=10)
 plt.show()
