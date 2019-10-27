@@ -4,10 +4,11 @@ import matplotlib.animation as animation
 
 import swarm_lib as lib
 import initialize_swarm as sw
+import aggregation as aggr
 
 
 #Initialize swarm
-sw.random_initializer(10, verbose=True)
+sw.random_initializer(20, verbose=True)
 x_list = [bot.x for bot in lib.SWARM]
 y_list = [bot.y for bot in lib.SWARM]
 
@@ -45,7 +46,7 @@ def update(data):
 
 def generate_points():
 	condition = True				#Change to condition from aggr library
-	task_func = random_generator	#Change to function from aggr lib
+	task_func = aggr.go_to_centroid	#Change to function from aggr lib
 	while condition:
 		yield(task_func())
 

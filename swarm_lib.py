@@ -48,6 +48,11 @@ class Bot:
 		grp.append(self)
 		return grp
 
+	def goto_direct(self, x_new, y_new):
+		#Updates x,y
+		self.x = x_new
+		self.y = y_new
+
 	def print_state(self):
 		print("BOT " +str(SWARM.index(self)))
 		print("Position: "+ str(self.x)+ ","+str(self.y))
