@@ -46,7 +46,7 @@ def update(data):
 
 def generate_points():
 	condition = True				#Change to condition from aggr library
-	task_func = aggr.go_to_centroid	#Change to function from aggr lib
+	task_func = aggr.go_towards_centroid	#Change to function from aggr lib
 	while condition:
 		yield(task_func())
 
@@ -57,6 +57,6 @@ print len(lib.SWARM)
 Main
 
 """
-ani = animation.FuncAnimation(fig, update, generate_points, interval=300)
+ani = animation.FuncAnimation(fig, update, generate_points, interval=150)
 #ani.save('animation.gif', writer='imagemagick', fps=4);
 plt.show()

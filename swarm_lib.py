@@ -18,6 +18,7 @@ import matplotlib.pyplot as plt
 DEFAULT_NEIGHBOURHOOD_VAL = 5 #Radius of neighbourhood 
 DEFAULT_SIZE = 0.5 #Radius of chassis
 MAX_SPEED = 1.5
+STEP = 0.2
 
 
 
@@ -32,6 +33,9 @@ class Bot:
 		self.state = state
 		self.neighbourhood_radius = neighbourhood_radius
 		SWARM.append(self)
+
+	def distPt(self, x_pt, y_pt):
+		return math.sqrt((self.x-x_pt)**2+(self.y-y_pt)**2)
 
 	def dist(self, bot):
 		return math.sqrt((bot.x - self.x)**2 + (bot.y - self.y)**2)

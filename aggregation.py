@@ -1,4 +1,5 @@
 import numpy as np
+import math
 
 import swarm_lib as lib
 
@@ -23,11 +24,44 @@ def get_local_centroids():
 	return (centroids_x, centroids_y)
 
 
-def go_towards_centroid():
-	pass
-
 def go_to_centroid():
+	"""
+	Returns: (centroids_x, centroids_y)
+	Same as get_local_centroids, but additionally updates the position of the bots,
+	by calling swarm_lib.goto_direct()
+	"""
 	(centroids_x, centroids_y) = get_local_centroids()
 	for i in range(len(lib.SWARM)):
 		lib.SWARM[i].goto_direct(centroids_x[i], centroids_y[i])
 	return (centroids_x, centroids_y)
+
+
+
+def go_towards_centroid(step_size = lib.STEP, pid=True):
+	"""
+	Arguments: step_size - max size of a single step
+	pid: smaller steps are proportional to remaining distance  
+
+	Use: Every bot takes a single step in the direction of the local centroid
+	Returns: (new_x, new_y)
+	Calls: get_local_centroids() and swarm_lib.goto_direct
+	
+	"""
+	centroids_x, centroids_y = get_local_centroids()
+	x_new = []
+	y_new = []
+	for i in range(len(lib.SWARM)):
+		bot = lib.SWARM[i]
+		remaining_dist = bot.distPt(centroids_x[i], centroids_y[i])
+		x_step = (centroids_x[i] - bot.x)/remaining_dist
+		y_step = (centroids_y[i] - bot.y)/remaining_dist
+
+		x_goal = (bot.x + x_step * step_size)
+		y_goal = (bot.y + y_step * step_size)
+
+		lib.SWARM[i].goto_direct(x_goal, y_goal)
+
+		x_new.append(x_goal)
+		y_new.append(y_goal)
+
+	return (x_new, y_new)
