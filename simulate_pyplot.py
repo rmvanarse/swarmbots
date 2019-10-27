@@ -24,6 +24,7 @@ import swarm_lib as lib
 import initialize_swarm as sw
 import aggregation as aggr
 import formations
+import area_coverage as coverage
 
 
 #Initialize swarm
@@ -39,7 +40,7 @@ bot_points, = ax.plot(x_list, y_list, 'o')
 
 #Helper functions
 def random_generator():
-	return (np.random.rand(len(lib.SWARM)), np.random.rand(len(lib.SWARM)))
+  return (np.random.rand(len(lib.SWARM)), np.random.rand(len(lib.SWARM)))
 
 #-----------------------
 #UPDATION:
@@ -64,11 +65,12 @@ def update(data):
     return bot_points,
 
 def generate_points():
-	condition = True				#Change to condition from aggr library
-	#task_func = aggr.go_towards_centroid	
-	task_func = formations.formation_team	
-	while condition:
-		yield(task_func())
+  condition = True        #Change to condition from aggr library
+  #task_func = aggr.go_towards_centroid 
+  #task_func = formations.formation_team
+  task_func = coverage.AC_potentialField
+  while condition:
+    yield(task_func())
 
 
 print len(lib.SWARM)
