@@ -31,12 +31,37 @@ import area_coverage as coverage
 sw.random_initializer(10, verbose=True)
 x_list = [bot.x for bot in lib.SWARM]
 y_list = [bot.y for bot in lib.SWARM]
-state_list = ['o' for i in range(len(lib.SWARM))]
+state_list = [bot.state for bot in lib.SWARM]
+
+#Pseudo init
+
+lib.SWARM[5].state = 'A'
+lib.SWARM[7].state = 'A'
+
+state_list[5] = 'A'
+state_list[7] = 'A'
+
+
+#States
+states =['blue', 'red'] #Replce with list from dict
+state_dict = {'A':'bo', 'stop':'go'} #Replace with dict from lib
+bot_points = []
+
+
+
 
 
 #Initialize figure
 fig, ax = plt.subplots()
-bot_points, = ax.plot(x_list, y_list, 'o')
+
+for i in range(len(state_list)):
+  tempX = lib.SWARM[i].x
+  tempY = lib.SWARM[i].y
+  col = state_dict[state_list[i]]
+  points, = ax.plot(tempX, tempY, col)
+  bot_points.append(points)
+
+
 
 #Set Limits (ToDo)
 ax.set_xlim(( 0, lib.DEFAULT_XRANGE))
@@ -45,7 +70,9 @@ ax.set_ylim((0, lib.DEFAULT_YRANGE))
 
 #Helper functions
 def random_generator():
-  return (np.random.rand(len(lib.SWARM)), np.random.rand(len(lib.SWARM)))
+  return (np.random.rand(len(lib.SWARM))*lib.DEFAULT_XRANGE, 
+    np.random.rand(len(lib.SWARM))*lib.DEFAULT_YRANGE,
+    state_list)
 
 #-----------------------
 #UPDATION:
@@ -65,15 +92,23 @@ def random_generator():
 
 """
 def update(data):
-    bot_points.set_ydata(data[1])
-    bot_points.set_xdata(data[0])
-    return bot_points,
+  ax.cla()
+  ax.set_xlim(( 0, lib.DEFAULT_XRANGE))
+  ax.set_ylim((0, lib.DEFAULT_YRANGE))
+  for i in range(len(state_list)):
+    tempX = data[0][i]
+    tempY = data[1][i]
+    col = state_dict[state_list[i]]
+    points, = ax.plot(tempX, tempY, col)
+    bot_points[i]= points
+  return bot_points
 
 def generate_points():
   condition = True        #Change to condition from aggr library
   #task_func = aggr.go_towards_centroid 
   #task_func = formations.formation_team
-  task_func = coverage.AC_potentialField
+  #task_func = coverage.AC_potentialField
+  task_func = random_generator
   while condition:
     yield(task_func())
 
