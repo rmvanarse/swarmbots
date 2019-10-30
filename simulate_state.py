@@ -25,6 +25,7 @@ import initialize_swarm as sw
 import aggregation as aggr
 import formations
 import area_coverage as coverage
+import decision_making
 
 
 #Initialize swarm
@@ -35,11 +36,6 @@ state_list = [bot.state for bot in lib.SWARM]
 
 #Pseudo init
 
-lib.SWARM[5].state = 'A'
-lib.SWARM[7].state = 'A'
-
-state_list[5] = 'A'
-state_list[7] = 'A'
 
 
 #States
@@ -88,9 +84,16 @@ def random_generator():
 - The 'data' argument of 'update' the default output from 
   the 'generate_points' function.
 
-- 'task_func' call resides in the 'generate_points' function. 
+- 'task_func' call resides in the 'generate_points' function.
+- 'task_func_prxy' is used for modifying parameters and return types of task_func 
 
 """
+
+def task_func_proxy():
+  state_list=decision_making.agreement_2state()
+  print(state_list)
+  return x_list, y_list, state_list
+
 def update(data):
   ax.cla()
   ax.set_xlim(( 0, lib.DEFAULT_XRANGE))
@@ -108,7 +111,7 @@ def generate_points():
   #task_func = aggr.go_towards_centroid 
   #task_func = formations.formation_team
   #task_func = coverage.AC_potentialField
-  task_func = random_generator
+  task_func = task_func_proxy
   while condition:
     yield(task_func())
 

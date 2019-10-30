@@ -64,6 +64,7 @@ class Bot:
 		print("BOT " +str(SWARM.index(self)))
 		print("Position: "+ str(self.x)+ ","+str(self.y))
 		print("Direction: "+str(self.theta))
+		print("State: "+str(self.state))
 		print("")
 		
 
