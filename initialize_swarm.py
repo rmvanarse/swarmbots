@@ -20,7 +20,22 @@ def random_initializer(num_bots, x_range=DEFAULT_X_RANGE, y_range=DEFAULT_Y_RANG
 		xpos = origin[0] + random.random()*x_range
 		ypos = origin[1] + random.random()*y_range
 		theta = random.random()*3.1415926*2
+
 		bot = swarm_lib.Bot(xpos, ypos, theta)
+
+	if(verbose):
+		for bot in swarm_lib.SWARM:
+			bot.print_state()
+
+def random_initializer_with_state(num_bots, x_range=DEFAULT_X_RANGE, y_range=DEFAULT_Y_RANGE, origin = (0,0), verbose=False):
+	for i in range(num_bots):
+		xpos = origin[0] + random.random()*x_range
+		ypos = origin[1] + random.random()*y_range
+		theta = random.random()*3.1415926*2
+		init_state='stop'
+		if(random.random()>0.5):
+			init_state='A'
+		bot = swarm_lib.Bot(xpos, ypos, theta, state = init_state)
 
 	if(verbose):
 		for bot in swarm_lib.SWARM:

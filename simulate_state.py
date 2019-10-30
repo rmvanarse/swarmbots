@@ -28,7 +28,7 @@ import area_coverage as coverage
 
 
 #Initialize swarm
-sw.random_initializer(10, verbose=True)
+sw.random_initializer_with_state(10, verbose=True)
 x_list = [bot.x for bot in lib.SWARM]
 y_list = [bot.y for bot in lib.SWARM]
 state_list = [bot.state for bot in lib.SWARM]
