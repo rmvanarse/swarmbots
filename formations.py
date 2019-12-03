@@ -18,7 +18,7 @@ import aggregation as aggr
 ARRANGE AT EQUAL DIST
 """
 
-def formation_team(dist = 0.5):
+def formation_team(dist = 1):
 	centroids_x, centroids_y = aggr.get_local_centroids()
 	x_new = []
 	y_new = []

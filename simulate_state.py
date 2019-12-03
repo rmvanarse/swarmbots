@@ -29,7 +29,7 @@ import decision_making
 
 
 #Initialize swarm
-sw.random_initializer_with_state(10, verbose=True)
+sw.random_initializer_with_state(20, verbose=True)
 x_list = [bot.x for bot in lib.SWARM]
 y_list = [bot.y for bot in lib.SWARM]
 state_list = [bot.state for bot in lib.SWARM]
@@ -92,12 +92,13 @@ def random_generator():
 def task_func_proxy():
   state_list=decision_making.agreement_2state()
   print(state_list)
-  return x_list, y_list, state_list
+  return (x_list, y_list, state_list)
 
 def update(data):
   ax.cla()
   ax.set_xlim(( 0, lib.DEFAULT_XRANGE))
   ax.set_ylim((0, lib.DEFAULT_YRANGE))
+
   for i in range(len(state_list)):
     tempX = data[0][i]
     tempY = data[1][i]
@@ -113,6 +114,7 @@ def generate_points():
   #task_func = coverage.AC_potentialField
   task_func = task_func_proxy
   while condition:
+    #print(state_list)
     yield(task_func())
 
 
