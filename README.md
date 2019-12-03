@@ -34,6 +34,7 @@ Create a local copy of the repository by running the following command:
 ## Running the Tests
 
 The _simulate_pyplot.py_ file can be used to test a graphical simulation of N bots for a particular task.
+
 ```python3 algorithm_simulations/simulate_pyplot.py```
 
 The number of bots can be varied by varying the parameter in _initialize_swarm()_ function. The initialization function can be replaced by any other initialization function from _initialize_swarm.py_ (imported).

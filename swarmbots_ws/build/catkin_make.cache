@@ -1,2 +1,0 @@
-
--DCATKIN_DEVEL_PREFIX=/home/abc/swarmbots/swarmbots_ws/devel -DCMAKE_INSTALL_PREFIX=/home/abc/swarmbots/swarmbots_ws/install -G Unix Makefiles
