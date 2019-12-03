@@ -35,7 +35,7 @@ Create a local copy of the repository by running the following command:
 
 The _simulate_pyplot.py_ file can be used to test a graphical simulation of N bots for a particular task.
 
-```python3 algorithm_simulations/simulate_pyplot.py```
+```python3 algorithm_simulation/simulate_pyplot.py```
 
 The number of bots can be varied by varying the parameter in _initialize_swarm()_ function. The initialization function can be replaced by any other initialization function from _initialize_swarm.py_ (imported).
 
@@ -49,7 +49,7 @@ The value of _task_func_ in _generate_points()_ decides the task to be carried o
 
 ### File Structure:
 
-**algorithm_simulations -** Contains a files for simulating basic algorithms on pyplot. The user can choose the initial configuration, number of bots, arena size, etc. Each basic task has a python file containing different implementations of the task. A library ( _swarm_lib.py_ ) includes all general functions required for simulating the swarm.
+**algorithm_simulation -** Contains a files for simulating basic algorithms on pyplot. The user can choose the initial configuration, number of bots, arena size, etc. Each basic task has a python file containing different implementations of the task. A library ( _swarm_lib.py_ ) includes all general functions required for simulating the swarm.
 
 The following tasks have been implemented crrently: Aggregation, Area COverage, Circle formation, Line Formation and 2-state decision making
 
@@ -62,8 +62,7 @@ The following tasks have been implemented crrently: Aggregation, Area COverage, 
 The algorithm simulation files are stable and ready to use. Implementations for Aggregation (2 implemntations), Area Coverage, Line Formation, Circle formation and 2-state decision making are complete. The ROS packages are in progress and are not ready to use directly. Simultaneously, more algorithms are being added to _algorithm_simulations_ and simulation results are being studied
 
 ### Authors:
-**Rishikesh Vanarse** ( [rmvanarse](https://github.com/rmvanarse) )
-
-_Sub-Coordinator, Electronics & Robotics Club, BOTS Goa_ ( [ERC-BPGC](https://github.com/ERC-BPGC/) )
+**Rishikesh Vanarse** ( [rmvanarse](https://github.com/rmvanarse) ) - 
+_Sub-Coordinator, Electronics & Robotics Club, BITS Goa_ ( [ERC-BPGC](https://github.com/ERC-BPGC/) )
 
 
