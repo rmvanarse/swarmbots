@@ -28,7 +28,7 @@ import area_coverage as coverage
 
 
 #Initialize swarm
-sw.random_initializer(20, verbose=True)
+sw.random_initializer(10, verbose=True)
 x_list = [bot.x for bot in lib.SWARM]
 y_list = [bot.y for bot in lib.SWARM]
 state_list = ['o' for i in range(len(lib.SWARM))]
@@ -71,7 +71,7 @@ def update(data):
 
 def generate_points():
   condition = True        #Change to condition from aggr library
-  task_func = aggr.go_towards_centroid 
+  task_func = aggr.aggr_potentialField
   #task_func = formations.formation_team
   #task_func = coverage.AC_potentialField
   while condition:
