@@ -105,6 +105,10 @@ def aggr_potentialField(k=0.1, width = DEFAULT_X_RANGE, height = DEFAULT_Y_RANGE
 	Returns: Tuple of Lists (x_new, y_new)
 
 	"""
+
+	#DEBUG!!!!
+
+	
 	x_new = []
 	y_new = []
 	for bot in lib.SWARM:
@@ -114,23 +118,34 @@ def aggr_potentialField(k=0.1, width = DEFAULT_X_RANGE, height = DEFAULT_Y_RANGE
 
 		for nb in grp:
 			dist = bot.dist(nb)
+
+			dist = max(dist, 0.001)
+
 			xcap = (nb.x - bot.x)/dist
 			ycap = (nb.y - bot.y)/dist
 
-			MAX_VEC = dist/20
+			MAX_VEC = dist/2000
 
 
 			x_vec+= min(k*xcap/(dist**2), MAX_VEC)
 			y_vec+= min(k*ycap/(dist**2), MAX_VEC)
 
-		x_vec-=k/((DEFAULT_X_RANGE-bot.x)**2)
-		x_vec+=k/((origin[0]-bot.x)**2)
+		if bot.x < DEFAULT_X_RANGE:
+			x_vec-=k/((DEFAULT_X_RANGE-bot.x)**2)
+		
+		if bot.x > origin[0]:
+			x_vec+=k/((origin[0]-bot.x)**2)
 
-		y_vec-=k/((DEFAULT_Y_RANGE-bot.y)**2)
-		y_vec+=k/((origin[1]-bot.y)**2)
+		if bot.y < DEFAULT_Y_RANGE:
+			y_vec-=k/((DEFAULT_Y_RANGE-bot.y)**2)
+	
+		if bot.y> origin[1]:
+			y_vec+=k/((origin[1]-bot.y)**2)
 
 		x_new.append(bot.x+ x_vec)
 		y_new.append(bot.y+ y_vec)
+
+		bot.print_state()
 
 	for i in range(len(lib.SWARM)):
 		lib.SWARM[i].goto_direct(x_new[i], y_new[i])
