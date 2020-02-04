@@ -25,6 +25,7 @@ import initialize_swarm as sw
 import aggregation as aggr
 import formations
 import area_coverage as coverage
+import line_formation as lf
 
 
 #Initialize swarm
@@ -71,7 +72,8 @@ def update(data):
 
 def generate_points():
   condition = True        #Change to condition from aggr library
-  task_func = aggr.aggr_potentialField
+  task_func = lf.linef
+  #task_func = aggr.aggr_potentialField
   #task_func = formations.formation_team
   #task_func = coverage.AC_potentialField
   while condition:
