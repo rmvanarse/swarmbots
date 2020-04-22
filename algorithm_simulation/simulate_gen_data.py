@@ -2,6 +2,8 @@
 Created by: Rishikesh Vanarse
 22/04/20
 
+Version: Python 3.5.2
+
 Runs multiple simulations of a given task,
 Saves results as CSV
 
@@ -23,18 +25,24 @@ import line_formation as lf
 #Parameters
 TASK_FUNC = aggr.go_towards_centroid
 SUCCESS = aggr.success
+INFO_FUNC = aggr.num_clusters
 METRIC = None
 
 TASK = "aggr"
 METHOD = "centroid"
+EXTRA_INFO = "Num Clusters"
 
 NUM_BOTS = 20
 ITERATIONS = 150
-NUM_SIMULATIONS = 30
+NUM_SIMULATIONS = 5
 
-CSV_PATH = ""
+CSV_PATH = "csv/"
 #CSV_NAME = f"{TASK}-{METHOD}-iter{ITERATIONS}-sims{NUM_SIMULATIONS}.csv"
-CSV_NAME = TASK+"-"+METHOD+"-iter"+str(ITERATIONS)+"-sims"+str(NUM_SIMULATIONS)+".csv"
+CSV_NAME = TASK+"-"+METHOD+"-"+str(NUM_BOTS)+"bots-"+str(NUM_SIMULATIONS)+"sims.csv"
+SAVE = True
+
+
+
 
 #Initialize swarm
 sw.random_initializer(NUM_BOTS, verbose=True)
@@ -65,7 +73,7 @@ Saves the csv
 #Aggregation test:
 #Basic structure of general code
 #Remove later
-
+"""
 for i in range(ITERATIONS):
 	TASK_FUNC()
 	if(not i%5):
@@ -75,3 +83,49 @@ for i in range(ITERATIONS):
 		break
 if(not SUCCESS()):
 	print("\n\nFailed")
+"""
+
+
+
+
+"""
+Main
+"""
+
+if __name__ == "__main__":
+	df = pd.DataFrame(columns = [
+		'Simulation', 
+		'Iterations', 
+		'Success',
+		'Score',
+		EXTRA_INFO
+		])
+
+	for _id in range(NUM_SIMULATIONS):
+
+		sw.random_initializer(NUM_BOTS, verbose=False)
+
+		for i in range(ITERATIONS):
+			TASK_FUNC()
+			
+			if SUCCESS():
+				print("Simulation", _id, "Success at iter: ", i)
+				break
+
+		if(not SUCCESS()):
+			print("Simulation", _id,"Failed")
+
+		df_temp = pd.DataFrame({
+					'Simulation':[_id],
+					'Iterations':[i],
+					'Success':[str(SUCCESS())],
+					'Score':[0],
+					EXTRA_INFO: [INFO_FUNC()]
+					})
+
+
+		df = df.append(df_temp, ignore_index = True, sort=False)
+	print("\n\n", df)
+
+	if(SAVE):
+		df.to_csv(CSV_PATH+CSV_NAME)
