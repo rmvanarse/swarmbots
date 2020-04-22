@@ -11,7 +11,7 @@ PRELIMINARIES
 DEFAULT_X_RANGE = lib.DEFAULT_XRANGE
 DEFAULT_Y_RANGE = lib.DEFAULT_YRANGE
 
-
+SUCCESS_DISTANCE = 0.8
 
 
 """
@@ -151,3 +151,44 @@ def aggr_potentialField(k=0.1, width = DEFAULT_X_RANGE, height = DEFAULT_Y_RANGE
 		lib.SWARM[i].goto_direct(x_new[i], y_new[i])
 
 	return (x_new, y_new)
+
+
+
+
+
+
+"""
+
+EVALUATION METRICS
+
+(and helper functions)
+
+"""
+
+def num_clusters(success_dist = SUCCESS_DISTANCE):
+
+	"""
+	Returns: Number of clusters formed
+	"""
+
+	clusters = [[lib.SWARM[0]]]
+	num_clusters = 1
+
+	for i in range(1, len(lib.SWARM)):
+		flag=0
+		for cluster in clusters:
+			for bot in cluster:
+				if lib.SWARM[i].dist(bot) <= success_dist:
+					cluster.append(lib.SWARM[i])
+					flag=1
+					break
+			if(flag):
+				break
+		if(not flag):
+			clusters.append([lib.SWARM[i]])
+			num_clusters +=1
+
+	return num_clusters
+
+def success():
+	return (num_clusters()==1)
