@@ -80,7 +80,7 @@ def generate_points():
     yield(task_func())
 
 
-print len(lib.SWARM)
+print(len(lib.SWARM))
 
 """
 Main
