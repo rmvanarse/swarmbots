@@ -192,3 +192,17 @@ def num_clusters(success_dist = SUCCESS_DISTANCE):
 
 def success():
 	return (num_clusters()==1)
+
+
+
+
+def metric_rms():
+	"""
+	Returns: Root mean square of all inter-robot distances
+	"""
+	s = 0
+	n = len(lib.SWARM)
+	for i in range(n):
+		for j in range(i+1, n):
+			s += lib.SWARM[i].dist(lib.SWARM[j])**2
+	return math.sqrt(2*s/(n*(n-1)))

@@ -26,7 +26,8 @@ import line_formation as lf
 TASK_FUNC = aggr.go_towards_centroid
 SUCCESS = aggr.success
 INFO_FUNC = aggr.num_clusters
-METRIC = None
+METRIC = aggr.metric_rms
+
 
 TASK = "aggr"
 METHOD = "centroid"
@@ -34,7 +35,7 @@ EXTRA_INFO = "Num Clusters"
 
 NUM_BOTS = 20
 ITERATIONS = 150
-NUM_SIMULATIONS = 5
+NUM_SIMULATIONS = 30
 
 CSV_PATH = "csv/"
 #CSV_NAME = f"{TASK}-{METHOD}-iter{ITERATIONS}-sims{NUM_SIMULATIONS}.csv"
@@ -116,10 +117,10 @@ if __name__ == "__main__":
 			print("Simulation", _id,"Failed")
 
 		df_temp = pd.DataFrame({
-					'Simulation':[_id],
+					'Simulation':[_id+1],
 					'Iterations':[i],
 					'Success':[str(SUCCESS())],
-					'Score':[0],
+					'Score':[METRIC()],
 					EXTRA_INFO: [INFO_FUNC()]
 					})
 
@@ -128,4 +129,4 @@ if __name__ == "__main__":
 	print("\n\n", df)
 
 	if(SAVE):
-		df.to_csv(CSV_PATH+CSV_NAME)
+		df.to_csv(CSV_PATH+CSV_NAME, index=False)
