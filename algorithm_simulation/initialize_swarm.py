@@ -16,6 +16,7 @@ DEFAULT_Y_RANGE =10
 
 
 def random_initializer(num_bots, x_range=DEFAULT_X_RANGE, y_range=DEFAULT_Y_RANGE, origin = (0,0), verbose=False):
+	swarm_lib.SWARM = []
 	for i in range(num_bots):
 		xpos = origin[0] + random.random()*x_range
 		ypos = origin[1] + random.random()*y_range
@@ -28,6 +29,7 @@ def random_initializer(num_bots, x_range=DEFAULT_X_RANGE, y_range=DEFAULT_Y_RANG
 			bot.print_state()
 
 def random_initializer_with_state(num_bots, x_range=DEFAULT_X_RANGE, y_range=DEFAULT_Y_RANGE, origin = (0,0), verbose=False):
+	swarm_lib.SWARM = []
 	for i in range(num_bots):
 		xpos = origin[0] + random.random()*x_range
 		ypos = origin[1] + random.random()*y_range

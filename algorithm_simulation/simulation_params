@@ -1,0 +1,18 @@
+#AGGREGATION:
+
+TASK_FUNC = aggr.go_towards_centroid
+SUCCESS = aggr.success
+INFO_FUNC = aggr.num_clusters
+METRIC = aggr.metric_rms
+
+
+TASK = "aggr"
+METHOD = "centroid"
+EXTRA_INFO = "Num Clusters"
+
+
+
+
+#2-STATE DECISION MAKING:
+
+

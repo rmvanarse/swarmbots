@@ -20,33 +20,33 @@ import aggregation as aggr
 import formations
 import area_coverage as coverage
 import line_formation as lf
-
+import decision_making as decisions
 
 #Parameters
-TASK_FUNC = aggr.go_towards_centroid
-SUCCESS = aggr.success
-INFO_FUNC = aggr.num_clusters
-METRIC = aggr.metric_rms
+TASK_FUNC = decisions.agreement_2state
+SUCCESS = decisions.success
+INFO_FUNC = lib.dummy
+METRIC = decisions.metric_ratio
 
 
-TASK = "aggr"
-METHOD = "centroid"
-EXTRA_INFO = "Num Clusters"
+TASK = "decisions"
+METHOD = "2state"
+EXTRA_INFO = "Extra Info"
 
-NUM_BOTS = 20
-ITERATIONS = 150
-NUM_SIMULATIONS = 30
+NUM_BOTS = 10
+ITERATIONS = 50
+NUM_SIMULATIONS = 10
 
 CSV_PATH = "csv/"
 #CSV_NAME = f"{TASK}-{METHOD}-iter{ITERATIONS}-sims{NUM_SIMULATIONS}.csv"
 CSV_NAME = TASK+"-"+METHOD+"-"+str(NUM_BOTS)+"bots-"+str(NUM_SIMULATIONS)+"sims.csv"
-SAVE = True
+SAVE = False
 
 
 
 
 #Initialize swarm
-sw.random_initializer(NUM_BOTS, verbose=True)
+sw.random_initializer_with_state(NUM_BOTS, verbose=True)
 x_list = [bot.x for bot in lib.SWARM]
 y_list = [bot.y for bot in lib.SWARM]
 
@@ -104,7 +104,7 @@ if __name__ == "__main__":
 
 	for _id in range(NUM_SIMULATIONS):
 
-		sw.random_initializer(NUM_BOTS, verbose=False)
+		sw.random_initializer_with_state(NUM_BOTS, verbose=False)
 
 		for i in range(ITERATIONS):
 			TASK_FUNC()

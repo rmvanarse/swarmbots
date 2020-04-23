@@ -37,6 +37,9 @@ class Bot:
 		self.neighbourhood_radius = neighbourhood_radius
 		SWARM.append(self)
 
+	def get_state(self):
+		return self.state
+
 	def distPt(self, x_pt, y_pt):
 		return math.sqrt((self.x-x_pt)**2+(self.y-y_pt)**2)
 
@@ -66,9 +69,13 @@ class Bot:
 		print("Direction: "+str(self.theta))
 		print("State: "+str(self.state))
 		print("")
-		
 
 
+def dummy():
+	return None
+
+def swarm_size():
+	return len(SWARM)
 #Show bots in pyplot
 
 def show_swarm():
