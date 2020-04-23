@@ -11,7 +11,7 @@ METHOD = "centroid"
 EXTRA_INFO = "Num Clusters"
 
 
-
+#-----------------------------------
 
 #2-STATE DECISION MAKING:
 
@@ -24,3 +24,20 @@ METRIC = decisions.metric_ratio
 TASK = "decisions"
 METHOD = "2state"
 EXTRA_INFO = "Extra Info"
+
+#-----------------------------------
+
+#CIRCLE FORMATION
+
+TASK_FUNC = formations.formation_team
+SUCCESS = formations.success
+INFO_FUNC = formations.true_radius
+METRIC = formations.metric_variance
+
+
+TASK = "circle"
+METHOD = "centroid"
+EXTRA_INFO = "Radius"
+
+#-----------------------------------
+

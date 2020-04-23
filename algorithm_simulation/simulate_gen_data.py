@@ -23,24 +23,24 @@ import line_formation as lf
 import decision_making as decisions
 
 #Parameters
-TASK_FUNC = aggr.go_towards_centroid
-SUCCESS = aggr.success
-INFO_FUNC = aggr.num_clusters
-METRIC = aggr.metric_rms
+TASK_FUNC = formations.formation_team
+SUCCESS = formations.success
+INFO_FUNC = formations.true_radius
+METRIC = formations.metric_variance
 
 
-TASK = "aggr"
+TASK = "circle"
 METHOD = "centroid"
-EXTRA_INFO = "Num Clusters"
+EXTRA_INFO = "Radius"
 
-NUM_BOTS = 10
+NUM_BOTS = 20
 ITERATIONS = 130
-NUM_SIMULATIONS = 30
+NUM_SIMULATIONS = 5
 
 CSV_PATH = "csv/"
 #CSV_NAME = f"{TASK}-{METHOD}-iter{ITERATIONS}-sims{NUM_SIMULATIONS}.csv"
 CSV_NAME = TASK+"-"+METHOD+"-"+str(NUM_BOTS)+"bots-"+str(NUM_SIMULATIONS)+"sims.csv"
-SAVE = True
+SAVE = False
 
 
 
