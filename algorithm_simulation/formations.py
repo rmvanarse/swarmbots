@@ -8,7 +8,7 @@ Contains functions for different formations
 
 """
 
-RADIUS = 1.2
+RADIUS = 1.5
 SUCCESS_VAR = 0.002
 
 

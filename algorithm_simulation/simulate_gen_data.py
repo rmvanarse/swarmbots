@@ -29,18 +29,18 @@ INFO_FUNC = formations.true_radius
 METRIC = formations.metric_variance
 
 
-TASK = "circle"
+TASK = "circle_r1-5"
 METHOD = "centroid"
 EXTRA_INFO = "Radius"
 
 NUM_BOTS = 20
 ITERATIONS = 130
-NUM_SIMULATIONS = 5
+NUM_SIMULATIONS = 30
 
 CSV_PATH = "csv/"
 #CSV_NAME = f"{TASK}-{METHOD}-iter{ITERATIONS}-sims{NUM_SIMULATIONS}.csv"
 CSV_NAME = TASK+"-"+METHOD+"-"+str(NUM_BOTS)+"bots-"+str(NUM_SIMULATIONS)+"sims.csv"
-SAVE = False
+SAVE = True
 
 
 
