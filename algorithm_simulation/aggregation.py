@@ -66,8 +66,8 @@ def go_towards_centroid(step_size = lib.STEP, pid=True):
 	for i in range(len(lib.SWARM)):
 		bot = lib.SWARM[i]
 		remaining_dist = bot.distPt(centroids_x[i], centroids_y[i])
-		x_step = (centroids_x[i] - bot.x)/remaining_dist
-		y_step = (centroids_y[i] - bot.y)/remaining_dist
+		x_step = (centroids_x[i] - bot.x)/max(0.00001, remaining_dist)
+		y_step = (centroids_y[i] - bot.y)/max(0.00001, remaining_dist)
 
 		x_goal = (bot.x + x_step * step_size)
 		y_goal = (bot.y + y_step * step_size)

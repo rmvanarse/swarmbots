@@ -15,4 +15,12 @@ EXTRA_INFO = "Num Clusters"
 
 #2-STATE DECISION MAKING:
 
+TASK_FUNC = decisions.agreement_2state
+SUCCESS = decisions.success
+INFO_FUNC = lib.dummy
+METRIC = decisions.metric_ratio
 
+
+TASK = "decisions"
+METHOD = "2state"
+EXTRA_INFO = "Extra Info"

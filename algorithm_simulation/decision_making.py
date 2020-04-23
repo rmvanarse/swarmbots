@@ -62,4 +62,4 @@ def metric_ratio():
 	if len(states_dict) == 1:
 		return 1.0
 	else:
-		return 2*(-0.5 + states_dict[max(states_dict)]/len(lib.SWARM))
+		return 2*((max(states_dict.values())/len(lib.SWARM))-0.5)

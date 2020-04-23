@@ -23,24 +23,24 @@ import line_formation as lf
 import decision_making as decisions
 
 #Parameters
-TASK_FUNC = decisions.agreement_2state
-SUCCESS = decisions.success
-INFO_FUNC = lib.dummy
-METRIC = decisions.metric_ratio
+TASK_FUNC = aggr.go_towards_centroid
+SUCCESS = aggr.success
+INFO_FUNC = aggr.num_clusters
+METRIC = aggr.metric_rms
 
 
-TASK = "decisions"
-METHOD = "2state"
-EXTRA_INFO = "Extra Info"
+TASK = "aggr"
+METHOD = "centroid"
+EXTRA_INFO = "Num Clusters"
 
 NUM_BOTS = 10
-ITERATIONS = 50
-NUM_SIMULATIONS = 10
+ITERATIONS = 130
+NUM_SIMULATIONS = 30
 
 CSV_PATH = "csv/"
 #CSV_NAME = f"{TASK}-{METHOD}-iter{ITERATIONS}-sims{NUM_SIMULATIONS}.csv"
 CSV_NAME = TASK+"-"+METHOD+"-"+str(NUM_BOTS)+"bots-"+str(NUM_SIMULATIONS)+"sims.csv"
-SAVE = False
+SAVE = True
 
 
 
