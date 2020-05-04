@@ -163,6 +163,30 @@ def run_simulations(min_bots, max_bots, increment,
 	return results
 
 
+def load_simulations(min_bots, max_bots, increment,
+	num_sim, path=CSV_PATH):
+	"""
+	Loads previously saved simulations
+	Input: 
+		min_bots: Minimum number of robots
+		max_bots: Maximum number of robots
+		increment: Increment in successive swarm size
+		num_sim: Number of simulations
+		path: Path of csv files
+	
+	Returns: List of Result objects
+
+	"""
+	results = []
+
+	for num_bots in range(min_bots, max_bots, increment):
+		filename = PREFIX+TASK+"-"+METHOD+"-"+str(num_bots)+"bots-"+str(num_sim)+"sims.csv"
+		r = Result(path+filename)
+		results.append(r)
+
+	return results
+
+
 #MAIN:
 
 if __name__ == '__main__':
@@ -171,6 +195,9 @@ if __name__ == '__main__':
 
 	if 'SIMULATE' in sys.argv:
 		results = run_simulations(MIN_BOTS, MAX_BOTS,
+			INCREMENT, NUM_SIMULATIONS)
+	elif 'LOAD' in sys.argv:
+		results = load_simulations(MIN_BOTS, MAX_BOTS,
 			INCREMENT, NUM_SIMULATIONS)
 	else:
 
