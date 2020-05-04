@@ -32,7 +32,7 @@ PREFIX = 'IGNORE__'
 
 CSV_NAME = PREFIX+TASK+"-"+METHOD+"-"+str(NUM_BOTS)+"bots-"+str(NUM_SIMULATIONS)+"sims.csv"
 
-PLOT = False
+PLOT = True
 SAVE = False
 
 
@@ -204,8 +204,16 @@ if __name__ == '__main__':
 		result = Result(CSV_PATH+CSV_NAME)
 		results.append(result)
 
+	
+	#Produce Stats
 	for i in range(len(results)):
 		print("\t---\t\n\n")
 		results[i].produce_stats()
 		results[i].summary()
 
+	#TEST Plot
+	if PLOT:
+		x = np.arange(MIN_BOTS,MAX_BOTS,INCREMENT)
+		y = np.array([r.success_rate for r in results])
+		plt.plot(x, y)
+		plt.show()
