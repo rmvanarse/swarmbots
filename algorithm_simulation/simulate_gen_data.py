@@ -44,7 +44,8 @@ PREFIX = ""
 if(len(sys.argv) >= 3):
 
 	NUM_BOTS = int(sys.argv[1])
-	CSV_PATH = sys.argv[2]
+	NUM_SIMULATIONS = int(sys.argv[2])
+	CSV_PATH = sys.argv[3]
 	PREFIX = 'IGNORE__'
 
 

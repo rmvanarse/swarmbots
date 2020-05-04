@@ -13,13 +13,20 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
+import sys
+
 
 #Parameters:
+
+MIN_BOTS = 5
+MAX_BOTS = 30
+INCREMENT = 3
 
 CSV_PATH = "csv/"
 NUM_BOTS = 20
 NUM_SIMULATIONS = 30
-TASK = "circle_r1-5"
+
+TASK = "aggr"
 METHOD = "centroid"
 PREFIX = 'IGNORE__'
 
@@ -120,8 +127,58 @@ class Result:
 		return None
 
 
+#FUNCTIONS:
+
+def run_simulations(min_bots, max_bots, increment,
+	num_sim, path=CSV_PATH):
+	"""
+	
+	Runs simulations for different swarm sizes
+	& saves the results as csv
+
+	Input: 
+		min_bots: Minimum number of robots
+		max_bots: Maximum number of robots
+		increment: Increment in successive swarm size
+		num_sim: Number of simulations
+		path: Path for storing csv files
+
+	Returns: List of Result objects
+	
+	"""
+
+	results = []
+
+	for num_bots in range(min_bots, max_bots, increment):
+		
+		#Run
+		args = str(num_bots)+' '+str(num_sim)+' '+path
+		os.system('python3 simulate_gen_data.py '+args)
+		
+		#Load Results
+		filename = PREFIX+TASK+"-"+METHOD+"-"+str(num_bots)+"bots-"+str(num_sim)+"sims.csv"
+		r = Result(path+filename)
+		results.append(r)
+
+	return results
+
+
+#MAIN:
+
 if __name__ == '__main__':
-	result = Result(CSV_PATH+CSV_NAME)
-	result.produce_stats()
-	result.summary()
+
+	results = []
+
+	if 'SIMULATE' in sys.argv:
+		results = run_simulations(MIN_BOTS, MAX_BOTS,
+			INCREMENT, NUM_SIMULATIONS)
+	else:
+
+		result = Result(CSV_PATH+CSV_NAME)
+		results.append(result)
+
+	for i in range(len(results)):
+		print("\t---\t\n\n")
+		results[i].produce_stats()
+		results[i].summary()
 
