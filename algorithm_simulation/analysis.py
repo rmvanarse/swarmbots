@@ -21,8 +21,9 @@ NUM_BOTS = 20
 NUM_SIMULATIONS = 30
 TASK = "circle_r1-5"
 METHOD = "centroid"
+PREFIX = 'IGNORE__'
 
-CSV_NAME = TASK+"-"+METHOD+"-"+str(NUM_BOTS)+"bots-"+str(NUM_SIMULATIONS)+"sims.csv"
+CSV_NAME = PREFIX+TASK+"-"+METHOD+"-"+str(NUM_BOTS)+"bots-"+str(NUM_SIMULATIONS)+"sims.csv"
 
 PLOT = False
 SAVE = False

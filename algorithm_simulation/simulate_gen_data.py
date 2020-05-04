@@ -13,6 +13,7 @@ Saves results as CSV
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import sys
 
 import swarm_lib as lib
 import initialize_swarm as sw
@@ -23,23 +24,32 @@ import line_formation as lf
 import decision_making as decisions
 
 #Parameters
-TASK_FUNC = formations.formation_team
-SUCCESS = formations.success
-INFO_FUNC = formations.true_radius
-METRIC = formations.metric_variance
+TASK_FUNC = aggr.go_towards_centroid
+SUCCESS = aggr.success
+INFO_FUNC = aggr.num_clusters
+METRIC = aggr.metric_rms
 
 
-TASK = "circle_r1-5"
+TASK = "aggr"
 METHOD = "centroid"
-EXTRA_INFO = "Radius"
+EXTRA_INFO = "Num Clusters"
 
 NUM_BOTS = 20
 ITERATIONS = 130
 NUM_SIMULATIONS = 30
 
 CSV_PATH = "csv/"
+PREFIX = ""
+
+if(len(sys.argv) >= 3):
+
+	NUM_BOTS = int(sys.argv[1])
+	CSV_PATH = sys.argv[2]
+	PREFIX = 'IGNORE__'
+
+
 #CSV_NAME = f"{TASK}-{METHOD}-iter{ITERATIONS}-sims{NUM_SIMULATIONS}.csv"
-CSV_NAME = TASK+"-"+METHOD+"-"+str(NUM_BOTS)+"bots-"+str(NUM_SIMULATIONS)+"sims.csv"
+CSV_NAME = PREFIX+TASK+"-"+METHOD+"-"+str(NUM_BOTS)+"bots-"+str(NUM_SIMULATIONS)+"sims.csv"
 SAVE = True
 
 
