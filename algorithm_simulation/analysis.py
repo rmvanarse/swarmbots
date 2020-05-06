@@ -205,6 +205,8 @@ if __name__ == '__main__':
 		results.append(result)
 
 	
+
+
 	#Produce Stats
 	for i in range(len(results)):
 		print("\t---\t\n\n")
@@ -214,10 +216,31 @@ if __name__ == '__main__':
 	#TEST Plot
 	if PLOT:
 		x = np.arange(MIN_BOTS,MAX_BOTS,INCREMENT)
-		y = np.array([r.success_rate for r in results])
-		plt.plot(x, y)
-		plt.ylim((0,1))
+
+		
+		"""MULTI_GRAPH BLOCK"""
+
+		for i in range(4):
+			PREFIX = "IGNORE__n"+str(i+3)+"--"
+			results = load_simulations(MIN_BOTS, MAX_BOTS,
+				INCREMENT, NUM_SIMULATIONS)
+			for j in range(len(results)):
+				print("\t---\t\n\n")
+				results[j].produce_stats()
+				results[j].summary()
+			y = np.array([r.success_rate for r in results])
+			plt.plot(x, y, label = "Neighbourhood R = "+str(i+3))
+		
+		"""  
+
+		"""
+		#plt.ylim((0,1.1))
 		plt.title('Centroid based aggregation - Swarm size v/s Success')
 		plt.xlabel('Number of robots')
 		plt.ylabel('Success Rate')
+		plt.legend()
 		plt.show()
+
+
+
+		
