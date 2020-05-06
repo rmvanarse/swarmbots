@@ -19,7 +19,7 @@ import sys
 #Parameters:
 
 MIN_BOTS = 5
-MAX_BOTS = 30
+MAX_BOTS = 40
 INCREMENT = 3
 
 CSV_PATH = "csv/"
@@ -28,7 +28,7 @@ NUM_SIMULATIONS = 30
 
 TASK = "aggr"
 METHOD = "centroid"
-PREFIX = 'IGNORE__'
+PREFIX = 'IGNORE__n5--'
 
 CSV_NAME = PREFIX+TASK+"-"+METHOD+"-"+str(NUM_BOTS)+"bots-"+str(NUM_SIMULATIONS)+"sims.csv"
 
@@ -216,4 +216,8 @@ if __name__ == '__main__':
 		x = np.arange(MIN_BOTS,MAX_BOTS,INCREMENT)
 		y = np.array([r.success_rate for r in results])
 		plt.plot(x, y)
+		plt.ylim((0,1))
+		plt.title('Centroid based aggregation - Swarm size v/s Success')
+		plt.xlabel('Number of robots')
+		plt.ylabel('Success Rate')
 		plt.show()
