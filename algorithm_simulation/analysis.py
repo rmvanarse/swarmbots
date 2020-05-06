@@ -5,7 +5,14 @@ Created by: Rishikesh Vanarse
 
 Python 3.5.2
 
+Run: python3 analysis.py <args>
+
+Loads/Performs multiple simulations
+(depending on cmdln arg: LOAD / SIMULATE)
+
 Performs analysis on simulation results
+Plots the results
+
 
 """
 
@@ -228,19 +235,24 @@ if __name__ == '__main__':
 				print("\t---\t\n\n")
 				results[j].produce_stats()
 				results[j].summary()
-			y = np.array([r.success_rate for r in results])
+			y = np.array([r.iterations for r in results])
 			plt.plot(x, y, label = "Neighbourhood R = "+str(i+3))
 		
 		"""  
 
 		"""
 		#plt.ylim((0,1.1))
-		plt.title('Centroid based aggregation - Swarm size v/s Success')
+		plt.title('Centroid based aggregation - Swarm size v/s Iterations')
 		plt.xlabel('Number of robots')
-		plt.ylabel('Success Rate')
+		plt.ylabel('Mean Iterations for Success')
 		plt.legend()
 		plt.show()
 
 
 
-		
+"""
+Formula used for score:
+
+ 1 / (0.7 + RMS_score)
+
+"""
