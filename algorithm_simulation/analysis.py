@@ -33,9 +33,9 @@ CSV_PATH = "csv/"
 NUM_BOTS = 20
 NUM_SIMULATIONS = 30
 
-TASK = "aggr"
+TASK = "circle_r1-5"
 METHOD = "centroid"
-PREFIX = 'IGNORE__n5--'
+PREFIX = 'IGNORE__n6--'
 
 CSV_NAME = PREFIX+TASK+"-"+METHOD+"-"+str(NUM_BOTS)+"bots-"+str(NUM_SIMULATIONS)+"sims.csv"
 
@@ -227,24 +227,24 @@ if __name__ == '__main__':
 		
 		"""MULTI_GRAPH BLOCK"""
 
-		for i in range(4):
-			PREFIX = "IGNORE__n"+str(i+3)+"--"
+		for i in range(3):
+			PREFIX = "IGNORE__n"+str(i+4)+"--"
 			results = load_simulations(MIN_BOTS, MAX_BOTS,
 				INCREMENT, NUM_SIMULATIONS)
 			for j in range(len(results)):
 				print("\t---\t\n\n")
 				results[j].produce_stats()
 				results[j].summary()
-			y = np.array([r.iterations for r in results])
-			plt.plot(x, y, label = "Neighbourhood R = "+str(i+3))
+			y = np.array([r.success_rate for r in results])
+			plt.plot(x, y, label = "Neighbourhood R = "+str(i+4))
 		
 		"""  
 
 		"""
 		#plt.ylim((0,1.1))
-		plt.title('Centroid based aggregation - Swarm size v/s Iterations')
+		plt.title('Circle foration - Swarm size v/s Success rate')
 		plt.xlabel('Number of robots')
-		plt.ylabel('Mean Iterations for Success')
+		plt.ylabel('Success rate')
 		plt.legend()
 		plt.show()
 
@@ -253,6 +253,7 @@ if __name__ == '__main__':
 """
 Formula used for score:
 
- 1 / (0.7 + RMS_score)
+Aggregation:		1 / (0.7 + RMS_score)
+Circle formation:	1 / (var_score + 1*neighbourhood_radius)
 
 """
