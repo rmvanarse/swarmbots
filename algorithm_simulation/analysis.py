@@ -33,7 +33,7 @@ CSV_PATH = "csv/"
 NUM_BOTS = 20
 NUM_SIMULATIONS = 30
 
-TASK = "circle_r1-0"
+TASK = "circle_r1-2"
 METHOD = "centroid"
 PREFIX = 'IGNORE__n6--'
 
@@ -231,7 +231,8 @@ if __name__ == '__main__':
 		"""MULTI_GRAPH BLOCK"""
 
 		for i in range(3):
-			PREFIX = "IGNORE__n"+str(i+4)+"--"
+			PREFIX = "IGNORE__n"+str(6)+"--"
+			TASK = "circle_r"+r_name_list[i]
 			results = load_simulations(MIN_BOTS, MAX_BOTS,
 				INCREMENT, NUM_SIMULATIONS)
 			for j in range(len(results)):
@@ -239,7 +240,7 @@ if __name__ == '__main__':
 				results[j].produce_stats()
 				results[j].summary()
 			y = np.array([r.iterations for r in results])
-			plt.plot(x, y, label = "Neighbourhood R = "+str(i+4))
+			plt.plot(x, y, label = "Radius = "+str(r_list[i]))
 		
 		"""  
 

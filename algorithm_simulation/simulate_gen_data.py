@@ -46,7 +46,7 @@ if(len(sys.argv) >= 3):
 	NUM_BOTS = int(sys.argv[1])
 	NUM_SIMULATIONS = int(sys.argv[2])
 	CSV_PATH = sys.argv[3]
-	PREFIX = 'IGNORE__n6--'
+	PREFIX = 'IGNORE__n5--'
 
 
 #CSV_NAME = f"{TASK}-{METHOD}-iter{ITERATIONS}-sims{NUM_SIMULATIONS}.csv"
