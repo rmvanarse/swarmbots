@@ -33,7 +33,7 @@ CSV_PATH = "csv/"
 NUM_BOTS = 20
 NUM_SIMULATIONS = 30
 
-TASK = "circle_r1-5"
+TASK = "circle_r1-0"
 METHOD = "centroid"
 PREFIX = 'IGNORE__n6--'
 
@@ -196,6 +196,9 @@ def load_simulations(min_bots, max_bots, increment,
 
 #MAIN:
 
+r_name_list = ['1-0', '1-2', '1-5']
+r_list = [1, 1.2, 1.5]
+
 if __name__ == '__main__':
 
 	results = []
@@ -235,16 +238,16 @@ if __name__ == '__main__':
 				print("\t---\t\n\n")
 				results[j].produce_stats()
 				results[j].summary()
-			y = np.array([r.success_rate for r in results])
+			y = np.array([r.iterations for r in results])
 			plt.plot(x, y, label = "Neighbourhood R = "+str(i+4))
 		
 		"""  
 
 		"""
 		#plt.ylim((0,1.1))
-		plt.title('Circle foration - Swarm size v/s Success rate')
+		plt.title('Circle formation - Swarm size v/s Iterations')
 		plt.xlabel('Number of robots')
-		plt.ylabel('Success rate')
+		plt.ylabel('Iterations needed for Success')
 		plt.legend()
 		plt.show()
 
