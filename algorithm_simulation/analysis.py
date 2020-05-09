@@ -33,8 +33,8 @@ CSV_PATH = "csv/"
 NUM_BOTS = 20
 NUM_SIMULATIONS = 30
 
-TASK = "circle_r1-2"
-METHOD = "centroid"
+TASK = "decisions"
+METHOD = "2state"
 PREFIX = 'IGNORE__n6--'
 
 CSV_NAME = PREFIX+TASK+"-"+METHOD+"-"+str(NUM_BOTS)+"bots-"+str(NUM_SIMULATIONS)+"sims.csv"
@@ -230,9 +230,9 @@ if __name__ == '__main__':
 		
 		"""MULTI_GRAPH BLOCK"""
 
-		for i in range(3):
-			PREFIX = "IGNORE__n"+str(6)+"--"
-			TASK = "circle_r"+r_name_list[i]
+		for i in range(4):
+			PREFIX = "IGNORE__n"+str(3+i)+"--"
+			#TASK = "circle_r"+r_name_list[0]
 			results = load_simulations(MIN_BOTS, MAX_BOTS,
 				INCREMENT, NUM_SIMULATIONS)
 			for j in range(len(results)):
@@ -240,13 +240,13 @@ if __name__ == '__main__':
 				results[j].produce_stats()
 				results[j].summary()
 			y = np.array([r.iterations for r in results])
-			plt.plot(x, y, label = "Radius = "+str(r_list[i]))
+			plt.plot(x, y, label = "Neighbourhood radius = "+str(3+i))
 		
 		"""  
 
 		"""
 		#plt.ylim((0,1.1))
-		plt.title('Circle formation - Swarm size v/s Iterations')
+		plt.title('2-state decision making\nSwarm size v/s Iterations for Success')
 		plt.xlabel('Number of robots')
 		plt.ylabel('Iterations needed for Success')
 		plt.legend()
@@ -258,6 +258,7 @@ if __name__ == '__main__':
 Formula used for score:
 
 Aggregation:		1 / (0.7 + RMS_score)
-Circle formation:	1 / (var_score + 1*neighbourhood_radius)
+Circle formation:	1 / (1 + var_score*neighbourhood_radius)
+Dcision making:		2 * (ratio_score - 0.5)
 
 """

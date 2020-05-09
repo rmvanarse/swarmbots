@@ -15,7 +15,7 @@ import numpy as np
 import math
 import matplotlib.pyplot as plt
 
-DEFAULT_NEIGHBOURHOOD_VAL = 5
+DEFAULT_NEIGHBOURHOOD_VAL = 6
 
 #DEFAULT_NEIGHBOURHOOD_VAL = 5 #Radius of neighbourhood 
 DEFAULT_SIZE = 0.5 #Radius of chassis
